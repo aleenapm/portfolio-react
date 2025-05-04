@@ -21,6 +21,7 @@ export default function HeroSection() {
         .fromTo(".hero-description", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.6")
         .fromTo(".hero-buttons", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.6")
         .fromTo(".hero-social", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.6")
+        .fromTo(".hero-image", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.6")
 
       // Floating animation for the hero image container
       gsap.to(".hero-image", {
@@ -36,10 +37,12 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="home" className="section min-h-screen flex items-center pt-20">
+    <section ref={sectionRef} id="home" className="section min-h-screen flex items-center pt-12 sm:pt-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        {/* Change the order of elements on mobile */}
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          {/* Text content - will appear second on mobile, first on desktop */}
+          <div className="space-y-6 mt-8 lg:mt-0">
             <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight">
               Hi, I'm <span className="text-primary">Aleena P M</span>
               <br />
@@ -85,12 +88,12 @@ export default function HeroSection() {
                 <Linkedin size={24} />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              
             </div>
           </div>
 
-          <div className="hero-image relative flex justify-center">
-            <div className="relative w-full max-w-md aspect-square">
+          {/* Image - will appear first on mobile, second on desktop */}
+          <div className="hero-image relative flex justify-center w-full mb-8 lg:mb-0">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 blur-3xl"></div>
               <div className="relative z-10 w-full h-full rounded-full border border-primary/20 overflow-hidden flex items-center justify-center">
                 <div className="relative w-4/5 h-4/5 rounded-full overflow-hidden border-4 border-primary/30">
